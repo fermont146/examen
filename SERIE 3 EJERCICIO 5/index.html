@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Prototipos en JavaScript</title>
+  </head>
+  <body>
+    <script>
+      // Constructor objeto Persona
+      function Persona(nombre, edad) {
+        this.nombre = nombre;
+        this.edad = edad;
+      }
+
+      // método prototipo de Persona
+      Persona.prototype.saludar = function () {
+        return `Hola, mi nombre es ${this.nombre} y tengo ${this.edad} años.`;
+      };
+
+      // nuevo objeto con constructor Persona
+      const juan = new Persona("Juan", 25);
+
+      //resultado del método saludar en la consola
+      console.log(juan.saludar()); // Imprime
+
+      // Constructor de objeto Estudiante que hereda de Persona
+      function Estudiante(nombre, edad, grado) {
+        Persona.call(this, nombre, edad); // Llamando al constructor de Persona
+        this.grado = grado;
+      }
+
+      // Haciendo que Estudiante herede del prototipo de Persona
+      Estudiante.prototype = Object.create(Persona.prototype);
+      Estudiante.prototype.constructor = Estudiante;
+
+      // Agregando un método específico al prototipo de Estudiante
+      Estudiante.prototype.estudiar = function () {
+        return `${this.nombre} está estudiando en ${this.grado} grado.`;
+      };
+
+      const ana = new Estudiante("Ana", 20, "3er");
+      console.log(ana.saludar()); // Imprime: "Hola, mi nombre es Ana y tengo 20 años."
+      console.log(ana.estudiar()); // Imprime: "Ana está estudiando en 3er grado."
+    </script>
+  </body>
+</html>

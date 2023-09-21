@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Object Destructuring en JavaScript</title>
+  </head>
+  <body>
+    <script>
+      const persona = {
+        nombre: "Fernando",
+        edad: 30,
+        ciudad: "Madrid",
+      };
+
+      // Utilizando object destructuring para extraer propiedades
+      const { nombre, edad, ciudad } = persona;
+
+      // Muestra los valores en consola
+      console.log(`Nombre: ${nombre}, Edad: ${edad}, Ciudad: ${ciudad}`);
+    </script>
+  </body>
+</html>

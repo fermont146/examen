@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ejemplo Objeto Literal</title>
+  </head>
+  <body>
+    <script>
+      var persona = {
+        nombre: "Fernando",
+        apellido: "Montoya",
+        edad: 30,
+        profesion: "Desarrollador",
+        saludar: function () {
+          console.log(
+            "¡Hola! Mi nombre es " +
+              this.nombre +
+              " " +
+              this.apellido +
+              " y tengo " +
+              this.edad +
+              " años y soy " +
+              this.profesion
+          );
+        },
+      };
+
+      // Acceder a las propiedades y método
+      console.log(persona.nombre); // Salida: Fernando
+      console.log(persona["edad"]); // Salida: 30
+      persona.saludar(); // Salida: ¡Hola! Mi nombre es Fernando
+    </script>
+  </body>
+</html>

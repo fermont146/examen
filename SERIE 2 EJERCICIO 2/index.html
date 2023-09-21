@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Arreglos en JavaScript</title>
+  </head>
+  <body>
+    <script>
+      // Propiedad length
+      let frutas = ["manzana", "banana", "cereza", "uva"];
+      document.write(
+        "La longitud del arreglo frutas es: " + frutas.length + "<br>"
+      );
+
+      // Método push()
+      frutas.push("pera");
+      document.write("Después de usar push: " + frutas + "<br>");
+
+      // Método pop()
+      let ultimaFruta = frutas.pop();
+      document.write("Fruta eliminada con pop: " + ultimaFruta + "<br>");
+
+      // Método shift()
+      let primeraFruta = frutas.shift();
+      document.write("Fruta eliminada con shift: " + primeraFruta + "<br>");
+
+      // Método unshift()
+      frutas.unshift("fresa");
+      document.write("Después de usar unshift: " + frutas + "<br>");
+    </script>
+  </body>
+</html>

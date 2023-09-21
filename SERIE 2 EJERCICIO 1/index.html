@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Funciones Flecha vs Funciones Regulares</title>
+  </head>
+  <body>
+    <h2>1. Sintaxis</h2>
+    <button onclick="testSintaxis()">Ejecutar Test de Sintaxis</button>
+    <p id="resultadoSintaxis"></p>
+
+    <h2>2. Uso de this</h2>
+    <button onclick="testThis()">Ejecutar Test de this</button>
+    <p id="resultadoThis"></p>
+
+    <h2>3. Uso como Constructores</h2>
+    <button onclick="testConstructores()">
+      Ejecutar Test de Constructores
+    </button>
+    <p id="resultadoConstructores"></p>
+
+    <h2>4. Objeto arguments</h2>
+    <button onclick="testArguments()">Ejecutar Test de arguments</button>
+    <p id="resultadoArguments"></p>
+
+    <script>
+      // 1. Sintaxis
+      function sumaRegular(a, b) {
+        return a + b;
+      }
+
+      const sumaFlecha = (a, b) => a + b;
+
+      function testSintaxis() {
+        document.getElementById(
+          "resultadoSintaxis"
+        ).innerText = `Función regular: ${sumaRegular(
+          3,
+          4
+        )}\nFunción flecha: ${sumaFlecha(3, 4)}`;
+      }
+
+      // 2. Uso de this
+      function ContadorRegular() {
+        this.valor = 0;
+        var self = this; // Capturamos el valor correcto de 'this'
+        var intervalo = setInterval(function () {
+          if (self.valor < 5) {
+            self.valor++; // Incrementamos el valor
+            document.getElementById("resultadoThis").innerText +=
+              "Función regular con 'self': " + self.valor + "\n";
+          } else {
+            clearInterval(intervalo); // Detenemos el intervalo cuando el valor llega a 10
+          }
+        }, 1000);
+      }
+
+      function ContadorFlecha() {
+        this.valor = 0;
+        var intervalo = setInterval(() => {
+          if (this.valor < 5) {
+            this.valor++; // Incrementamos el valor
+            document.getElementById("resultadoThis").innerText +=
+              "Función flecha: " + this.valor + "\n";
+          } else {
+            clearInterval(intervalo); // Detenemos el intervalo cuando el valor llega a 10
+          }
+        }, 1000);
+      }
+
+      function testThis() {
+        const contadorRegular = new ContadorRegular();
+        const contadorFlecha = new ContadorFlecha();
+      }
+
+      // 3. Uso como Constructores
+      function Persona(nombre) {
+        this.nombre = nombre;
+      }
+
+      const PersonaFlecha = (nombre) => {
+        this.nombre = nombre;
+      };
+
+      function testConstructores() {
+        const juan = new Persona("Juan");
+        try {
+          const juanFlecha = new PersonaFlecha("Juan");
+        } catch (e) {
+          document.getElementById(
+            "resultadoConstructores"
+          ).innerText = `Error con función flecha: ${e.message}`;
+        }
+      }
+
+      // 4. Objeto arguments
+      function muestraArgumentsRegular() {
+        return Array.from(arguments);
+      }
+
+      const muestraArgumentsFlecha = (...args) => {
+        return args;
+      };
+
+      function testArguments() {
+        document.getElementById(
+          "resultadoArguments"
+        ).innerText = `Función regular: ${muestraArgumentsRegular(
+          1,
+          2,
+          3
+        )}\nFunción flecha: ${muestraArgumentsFlecha(1, 2, 3)}`;
+      }
+    </script>
+  </body>
+</html>

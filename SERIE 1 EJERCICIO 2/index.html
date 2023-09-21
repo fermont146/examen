@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Comparación de Promesas y async/await</title>
+  </head>
+  <body>
+    <h1>Comparación entre Promesas y async/await en JavaScript</h1>
+
+    <section>
+      <h2>Usando Promesas</h2>
+      <button id="promisesButton">Iniciar tarea con Promesas</button>
+      <div id="resultPromises"></div>
+    </section>
+
+    <section>
+      <h2>Usando async/await</h2>
+      <button id="asyncAwaitButton">Iniciar tarea con async/await</button>
+      <div id="resultAsyncAwait"></div>
+    </section>
+
+    <script>
+      function tareaAsincrona() {
+        return new Promise((resolve, reject) => {
+          setTimeout(() => {
+            const randomNumber = Math.random();
+            if (randomNumber > 0.5) {
+              resolve("¡Operación exitosa con promesas!");
+            } else {
+              reject("Error usando promesas.");
+            }
+          }, 2000);
+        });
+      }
+
+      document
+        .getElementById("promisesButton")
+        .addEventListener("click", function () {
+          tareaAsincrona()
+            .then((resultado) => {
+              document.getElementById("resultPromises").textContent = resultado;
+            })
+            .catch((error) => {
+              document.getElementById("resultPromises").textContent = error;
+            });
+        });
+
+      async function tareaAsincronaConAsyncAwait() {
+        try {
+          const resultado = await tareaAsincrona();
+          document.getElementById("resultAsyncAwait").textContent =
+            "¡Operación exitosa con async/await!";
+        } catch (error) {
+          document.getElementById("resultAsyncAwait").textContent =
+            "Error usando async/await.";
+        }
+      }
+
+      document
+        .getElementById("asyncAwaitButton")
+        .addEventListener("click", tareaAsincronaConAsyncAwait);
+    </script>
+  </body>
+</html>

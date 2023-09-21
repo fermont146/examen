@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Diferencia entre let y var</title>
+  </head>
+  <body>
+    <h2>Resultado de var</h2>
+    <p id="resultadoVar"></p>
+
+    <h2>Resultado de let</h2>
+    <p id="resultadoLet"></p>
+
+    <script>
+      function ejemploVar() {
+        if (true) {
+          var variableVar = "Visible fuera del bloque";
+        }
+        return variableVar;
+      }
+
+      function ejemploLet() {
+        if (true) {
+          let variableLet = "No visible fuera del bloque";
+          return variableLet;
+        }
+
+        // Esto causaría un error si se descomenta:
+        // return variableLet;
+      }
+
+      document.getElementById("resultadoVar").textContent = ejemploVar();
+      document.getElementById("resultadoLet").textContent = ejemploLet();
+    </script>
+  </body>
+</html>

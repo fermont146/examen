@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ejemplo de map() en JavaScript</title>
+  </head>
+  <body>
+    <h2>Ejemplo de la función map() en JavaScript</h2>
+    <p>Arreglo original: <span id="original"></span></p>
+    <p>Arreglo transformado: <span id="transformado"></span></p>
+
+    <script>
+      const numeros = [1, 2, 3, 4, 5];
+      const numerosDoblados = numeros.map((num) => num * 2);
+
+      document.getElementById("original").textContent = numeros;
+      document.getElementById("transformado").textContent = numerosDoblados;
+    </script>
+  </body>
+</html>

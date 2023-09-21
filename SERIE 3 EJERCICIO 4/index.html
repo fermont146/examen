@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Constructor de Objetos en JavaScript</title>
+  </head>
+  <body>
+    <script>
+      // Definición del constructor de objeto Persona
+      function Persona(nombre, apellido, edad) {
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.edad = edad;
+
+        // Agregando un método al objeto
+        this.presentarse = function () {
+          return `Hola, mi nombre es ${this.nombre} ${this.apellido} y tengo ${this.edad} años y soy ${this.profesion}`;
+        };
+      }
+
+      // Creando un nuevo objeto utilizando el constructor Persona
+      const juan = new Persona("Fernando", "Montoya", 25);
+
+      // Agregando una propiedad adicional al objeto juan
+      juan.profesion = "Ingeniero";
+
+      // Mostrando el objeto y sus propiedades en la consola
+      console.log(juan);
+      console.log(juan.presentarse());
+    </script>
+  </body>
+</html>
